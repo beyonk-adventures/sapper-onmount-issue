@@ -1,0 +1,35 @@
+
+<h1>The colour {currentColour}</h1>
+
+<div style="background-color: #{currentColour};">
+</div>
+
+<h2>Other Colours</h2>
+<ColourList />
+
+<script context="module">
+	export function preload (page) {
+		return { hex: page.params.hex }
+	}
+</script>
+
+<script>
+	import { onMount } from 'svelte'
+	import ColourList from '../../components/ColourList.svelte'
+	
+	export let hex
+
+	let currentColour
+	
+	onMount(() => {
+		console.log('mounting, and setting current colour to', hex)
+		currentColour = hex
+	})
+</script>
+
+<style>
+	div {
+		height: 100px;
+		width: 100px;
+	}
+</style>
