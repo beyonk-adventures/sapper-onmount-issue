@@ -1,8 +1,7 @@
 
-<h1>The colour {currentColour}</h1>
+<h1>The colour {hex}</h1>
 
-<div style="background-color: #{currentColour};">
-</div>
+<ColourBlock {hex} />
 
 <h2>Other Colours</h2>
 <ColourList />
@@ -16,20 +15,7 @@
 <script>
 	import { onMount } from 'svelte'
 	import ColourList from '../../components/ColourList.svelte'
+	import ColourBlock from '../../components/ColourBlock.svelte'
 	
 	export let hex
-
-	let currentColour
-	
-	onMount(() => {
-		console.log('mounting, and setting current colour to', hex)
-		currentColour = hex
-	})
 </script>
-
-<style>
-	div {
-		height: 100px;
-		width: 100px;
-	}
-</style>
