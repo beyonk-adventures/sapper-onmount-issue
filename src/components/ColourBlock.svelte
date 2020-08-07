@@ -1,17 +1,18 @@
-<div style="background-color: #{$currentColour};">
-</div>
+<Block {contextKey} />
 
 <script>
+  import { setContext } from 'svelte'
+  import Block from './Block.svelte'
   import { readable } from 'svelte/store'
+
+  const contextKey = {}
 
   export let hex
 
-  const currentColour = readable(hex)
-</script>
+  $: hex && loadColour()
 
-<style>
-	div {
-		height: 100px;
-		width: 100px;
-	}
-</style>
+  function loadColour () {
+    console.log('setting colour to', hex)
+    setContext(contextKey, { hex: readable(hex) })
+  }
+</script>
